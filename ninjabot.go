@@ -9,15 +9,15 @@ import (
 
 	"github.com/aybabtme/uniplot/histogram"
 
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/model"
-	"github.com/rodrigo-brito/ninjabot/notification"
-	"github.com/rodrigo-brito/ninjabot/order"
-	"github.com/rodrigo-brito/ninjabot/service"
-	"github.com/rodrigo-brito/ninjabot/storage"
-	"github.com/rodrigo-brito/ninjabot/strategy"
-	"github.com/rodrigo-brito/ninjabot/tools/log"
-	"github.com/rodrigo-brito/ninjabot/tools/metrics"
+	"github.com/buugaaga/ninjabot/exchange"
+	"github.com/buugaaga/ninjabot/model"
+	"github.com/buugaaga/ninjabot/notification"
+	"github.com/buugaaga/ninjabot/order"
+	"github.com/buugaaga/ninjabot/service"
+	"github.com/buugaaga/ninjabot/storage"
+	"github.com/buugaaga/ninjabot/strategy"
+	"github.com/buugaaga/ninjabot/tools/log"
+	"github.com/buugaaga/ninjabot/tools/metrics"
 
 	"github.com/olekukonko/tablewriter"
 	"github.com/schollz/progressbar/v3"
@@ -61,8 +61,8 @@ type NinjaBot struct {
 type Option func(*NinjaBot)
 
 func NewBot(ctx context.Context, settings model.Settings, exch service.Exchange, str strategy.Strategy,
-	options ...Option) (*NinjaBot, error) {
-
+	options ...Option,
+) (*NinjaBot, error) {
 	bot := &NinjaBot{
 		settings:              settings,
 		exchange:              exch,
@@ -270,7 +270,6 @@ func (n *NinjaBot) Summary() {
 	if n.paperWallet != nil {
 		n.paperWallet.Summary()
 	}
-
 }
 
 func (n NinjaBot) SaveReturns(outputDir string) error {

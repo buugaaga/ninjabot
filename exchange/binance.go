@@ -10,8 +10,8 @@ import (
 	"github.com/adshao/go-binance/v2/common"
 	"github.com/jpillora/backoff"
 
-	"github.com/rodrigo-brito/ninjabot/model"
-	"github.com/rodrigo-brito/ninjabot/tools/log"
+	"github.com/buugaaga/ninjabot/model"
+	"github.com/buugaaga/ninjabot/tools/log"
 )
 
 type MetadataFetchers func(pair string, t time.Time) (string, float64)
@@ -142,8 +142,8 @@ func (b *Binance) validate(pair string, quantity float64) error {
 }
 
 func (b *Binance) CreateOrderOCO(side model.SideType, pair string,
-	quantity, price, stop, stopLimit float64) ([]model.Order, error) {
-
+	quantity, price, stop, stopLimit float64,
+) ([]model.Order, error) {
 	// validate stop
 	err := b.validate(pair, quantity)
 	if err != nil {
@@ -238,8 +238,8 @@ func (b *Binance) formatQuantity(pair string, value float64) string {
 }
 
 func (b *Binance) CreateOrderLimit(side model.SideType, pair string,
-	quantity float64, limit float64) (model.Order, error) {
-
+	quantity float64, limit float64,
+) (model.Order, error) {
 	err := b.validate(pair, quantity)
 	if err != nil {
 		return model.Order{}, err
@@ -373,7 +373,6 @@ func (b *Binance) Orders(pair string, limit int) ([]model.Order, error) {
 		Symbol(pair).
 		Limit(limit).
 		Do(b.ctx)
-
 	if err != nil {
 		return nil, err
 	}
@@ -390,7 +389,6 @@ func (b *Binance) Order(pair string, id int64) (model.Order, error) {
 		Symbol(pair).
 		OrderID(id).
 		Do(b.ctx)
-
 	if err != nil {
 		return model.Order{}, err
 	}
@@ -491,7 +489,6 @@ func (b *Binance) CandlesSubscription(ctx context.Context, pair, period string) 
 				}
 
 				ccandle <- candle
-
 			}, func(err error) {
 				cerr <- err
 			})
@@ -525,7 +522,6 @@ func (b *Binance) CandlesByLimit(ctx context.Context, pair, period string, limit
 		Interval(period).
 		Limit(limit + 1).
 		Do(ctx)
-
 	if err != nil {
 		return nil, err
 	}
@@ -545,8 +541,8 @@ func (b *Binance) CandlesByLimit(ctx context.Context, pair, period string, limit
 }
 
 func (b *Binance) CandlesByPeriod(ctx context.Context, pair, period string,
-	start, end time.Time) ([]model.Candle, error) {
-
+	start, end time.Time,
+) ([]model.Candle, error) {
 	candles := make([]model.Candle, 0)
 	klineService := b.client.NewKlinesService()
 	ha := model.NewHeikinAshi()
@@ -556,7 +552,6 @@ func (b *Binance) CandlesByPeriod(ctx context.Context, pair, period string,
 		StartTime(start.UnixNano() / int64(time.Millisecond)).
 		EndTime(end.UnixNano() / int64(time.Millisecond)).
 		Do(ctx)
-
 	if err != nil {
 		return nil, err
 	}

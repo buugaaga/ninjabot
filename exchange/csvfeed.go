@@ -13,7 +13,7 @@ import (
 	"github.com/samber/lo"
 	"github.com/xhit/go-str2duration/v2"
 
-	"github.com/rodrigo-brito/ninjabot/model"
+	"github.com/buugaaga/ninjabot/model"
 )
 
 var ErrInsufficientData = errors.New("insufficient data")
@@ -275,8 +275,8 @@ func (c *CSVFeed) resample(pair, sourceTimeframe, targetTimeframe string) error 
 }
 
 func (c CSVFeed) CandlesByPeriod(_ context.Context, pair, timeframe string,
-	start, end time.Time) ([]model.Candle, error) {
-
+	start, end time.Time,
+) ([]model.Candle, error) {
 	key := c.feedTimeframeKey(pair, timeframe)
 	candles := make([]model.Candle, 0)
 	for _, candle := range c.CandlePairTimeFrame[key] {

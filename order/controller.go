@@ -10,10 +10,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/model"
-	"github.com/rodrigo-brito/ninjabot/service"
-	"github.com/rodrigo-brito/ninjabot/storage"
+	"github.com/buugaaga/ninjabot/exchange"
+	"github.com/buugaaga/ninjabot/model"
+	"github.com/buugaaga/ninjabot/service"
+	"github.com/buugaaga/ninjabot/storage"
 
 	"github.com/olekukonko/tablewriter"
 	log "github.com/sirupsen/logrus"
@@ -235,8 +235,8 @@ type Controller struct {
 }
 
 func NewController(ctx context.Context, exchange service.Exchange, storage storage.Storage,
-	orderFeed *Feed) *Controller {
-
+	orderFeed *Feed,
+) *Controller {
 	return &Controller{
 		ctx:            ctx,
 		storage:        storage,
@@ -342,7 +342,7 @@ func (c *Controller) updateOrders() {
 	c.mtx.Lock()
 	defer c.mtx.Unlock()
 
-	//pending orders
+	// pending orders
 	orders, err := c.storage.Orders(storage.WithStatusIn(
 		model.OrderStatusTypeNew,
 		model.OrderStatusTypePartiallyFilled,
@@ -442,7 +442,8 @@ func (c *Controller) Order(pair string, id int64) (model.Order, error) {
 }
 
 func (c *Controller) CreateOrderOCO(side model.SideType, pair string, size, price, stop,
-	stopLimit float64) ([]model.Order, error) {
+	stopLimit float64,
+) ([]model.Order, error) {
 	c.mtx.Lock()
 	defer c.mtx.Unlock()
 

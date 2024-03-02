@@ -3,11 +3,11 @@ package strategies
 import (
 	"github.com/markcheno/go-talib"
 
-	"github.com/rodrigo-brito/ninjabot/indicator"
-	"github.com/rodrigo-brito/ninjabot/model"
-	"github.com/rodrigo-brito/ninjabot/service"
-	"github.com/rodrigo-brito/ninjabot/strategy"
-	"github.com/rodrigo-brito/ninjabot/tools/log"
+	"github.com/buugaaga/ninjabot/indicator"
+	"github.com/buugaaga/ninjabot/model"
+	"github.com/buugaaga/ninjabot/service"
+	"github.com/buugaaga/ninjabot/strategy"
+	"github.com/buugaaga/ninjabot/tools/log"
 )
 
 type OCOSell struct{}

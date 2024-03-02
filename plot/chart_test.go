@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/model"
+	"github.com/buugaaga/ninjabot/exchange"
+	"github.com/buugaaga/ninjabot/model"
 
 	"github.com/StudioSol/set"
 	"github.com/stretchr/testify/require"
@@ -47,7 +47,7 @@ func TestChart_CandleAndOrder(t *testing.T) {
 	c.OnOrder(order)
 	require.Equal(t, order, c.orderByID[order.ID])
 
-	//feed candle and oco order
+	// feed candle and oco order
 	candle2 := model.Candle{
 		Pair:     "ETHUSDT",
 		Time:     time.Date(2021, 9, 28, 8, 0, 0, 0, time.UTC),
@@ -97,7 +97,7 @@ func TestChart_CandleAndOrder(t *testing.T) {
 	c.OnOrder(stopOrder)
 	require.Equal(t, stopOrder, c.orderByID[stopOrder.ID])
 
-	//test candles by pair
+	// test candles by pair
 	expectCandleByPair := []Candle{
 		{
 			Time:   time.Date(2021, 9, 26, 20, 0, 0, 0, time.UTC),
@@ -126,7 +126,7 @@ func TestChart_CandleAndOrder(t *testing.T) {
 	candles := c.candlesByPair(pair)
 	require.Equal(t, expectCandleByPair, candles)
 
-	//test shapes by pare
+	// test shapes by pare
 	expectShapesByPair := []Shape{
 		{
 			StartX: time.Date(2021, 9, 28, 8, 0, 0, 0, time.UTC),

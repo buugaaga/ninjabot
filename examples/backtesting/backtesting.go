@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 
-	"github.com/rodrigo-brito/ninjabot"
-	"github.com/rodrigo-brito/ninjabot/examples/strategies"
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/plot"
-	"github.com/rodrigo-brito/ninjabot/plot/indicator"
-	"github.com/rodrigo-brito/ninjabot/storage"
-	"github.com/rodrigo-brito/ninjabot/tools/log"
+	"github.com/buugaaga/ninjabot"
+	"github.com/buugaaga/ninjabot/examples/strategies"
+	"github.com/buugaaga/ninjabot/exchange"
+	"github.com/buugaaga/ninjabot/plot"
+	"github.com/buugaaga/ninjabot/plot/indicator"
+	"github.com/buugaaga/ninjabot/storage"
+	"github.com/buugaaga/ninjabot/tools/log"
 )
 
 // This example shows how to use backtesting with NinjaBot

@@ -11,9 +11,9 @@ import (
 
 	"github.com/adshao/go-binance/v2/common"
 
-	"github.com/rodrigo-brito/ninjabot/model"
-	"github.com/rodrigo-brito/ninjabot/service"
-	"github.com/rodrigo-brito/ninjabot/tools/log"
+	"github.com/buugaaga/ninjabot/model"
+	"github.com/buugaaga/ninjabot/service"
+	"github.com/buugaaga/ninjabot/tools/log"
 )
 
 type assetInfo struct {
@@ -259,7 +259,6 @@ func (p *PaperWallet) validateFunds(side model.SideType, pair string, amount, va
 				p.assets[asset].Free -= amount
 			} else { // liquidating long position
 				p.assets[quote].Free += amount * value
-
 			}
 		} else {
 			p.assets[asset].Lock += lockedAsset
@@ -506,7 +505,8 @@ func (p *PaperWallet) Position(pair string) (asset, quote float64, err error) {
 }
 
 func (p *PaperWallet) CreateOrderOCO(side model.SideType, pair string,
-	size, price, stop, stopLimit float64) ([]model.Order, error) {
+	size, price, stop, stopLimit float64,
+) ([]model.Order, error) {
 	p.Lock()
 	defer p.Unlock()
 
@@ -554,8 +554,8 @@ func (p *PaperWallet) CreateOrderOCO(side model.SideType, pair string,
 }
 
 func (p *PaperWallet) CreateOrderLimit(side model.SideType, pair string,
-	size float64, limit float64) (model.Order, error) {
-
+	size float64, limit float64,
+) (model.Order, error) {
 	p.Lock()
 	defer p.Unlock()
 
@@ -652,7 +652,8 @@ func (p *PaperWallet) createOrderMarket(side model.SideType, pair string, size f
 }
 
 func (p *PaperWallet) CreateOrderMarketQuote(side model.SideType, pair string,
-	quoteQuantity float64) (model.Order, error) {
+	quoteQuantity float64,
+) (model.Order, error) {
 	p.Lock()
 	defer p.Unlock()
 
@@ -683,7 +684,8 @@ func (p *PaperWallet) Order(_ string, id int64) (model.Order, error) {
 }
 
 func (p *PaperWallet) CandlesByPeriod(ctx context.Context, pair, period string,
-	start, end time.Time) ([]model.Candle, error) {
+	start, end time.Time,
+) ([]model.Candle, error) {
 	return p.feeder.CandlesByPeriod(ctx, pair, period, start, end)
 }
 

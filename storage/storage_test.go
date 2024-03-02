@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rodrigo-brito/ninjabot/model"
+	"github.com/buugaaga/ninjabot/model"
 	"github.com/stretchr/testify/require"
 )
 

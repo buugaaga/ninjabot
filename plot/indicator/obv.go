@@ -3,8 +3,8 @@ package indicator
 import (
 	"time"
 
-	"github.com/rodrigo-brito/ninjabot/model"
-	"github.com/rodrigo-brito/ninjabot/plot"
+	"github.com/buugaaga/ninjabot/model"
+	"github.com/buugaaga/ninjabot/plot"
 
 	"github.com/markcheno/go-talib"
 )

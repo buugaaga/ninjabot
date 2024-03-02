@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/service"
+	"github.com/buugaaga/ninjabot/exchange"
+	"github.com/buugaaga/ninjabot/service"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -39,7 +39,6 @@ func TestDownloader_candlesCount(t *testing.T) {
 			assert.Equal(t, tc.interval, interval)
 		}
 	})
-
 }
 
 func TestDownloader_withInterval(t *testing.T) {

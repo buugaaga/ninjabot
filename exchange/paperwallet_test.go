@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/rodrigo-brito/ninjabot/model"
+	"github.com/buugaaga/ninjabot/model"
 )
 
 func TestPaperWallet_ValidateFunds(t *testing.T) {
@@ -213,7 +213,8 @@ func TestPaperWallet_OrderMarket(t *testing.T) {
 	require.Equal(t, &OrderError{
 		Err:      ErrInsufficientFunds,
 		Pair:     "BTCUSDT",
-		Quantity: 100}, err)
+		Quantity: 100,
+	}, err)
 	require.Empty(t, order)
 
 	// sell
@@ -255,7 +256,8 @@ func TestPaperWallet_OrderOCO(t *testing.T) {
 	require.Equal(t, &OrderError{
 		Err:      ErrInsufficientFunds,
 		Pair:     "BTCUSDT",
-		Quantity: 1}, err)
+		Quantity: 1,
+	}, err)
 	require.Nil(t, orders)
 
 	// execute stop and cancel target
@@ -550,5 +552,4 @@ func TestUpdateAveragePrice(t *testing.T) {
 			})
 		}
 	})
-
 }

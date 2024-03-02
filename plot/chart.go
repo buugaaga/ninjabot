@@ -13,19 +13,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/model"
-	"github.com/rodrigo-brito/ninjabot/strategy"
+	"github.com/buugaaga/ninjabot/exchange"
+	"github.com/buugaaga/ninjabot/model"
+	"github.com/buugaaga/ninjabot/strategy"
 
 	"github.com/StudioSol/set"
 	"github.com/evanw/esbuild/pkg/api"
 	log "github.com/sirupsen/logrus"
 )
 
-var (
-	//go:embed assets
-	staticFiles embed.FS
-)
+//go:embed assets
+var staticFiles embed.FS
 
 type Chart struct {
 	sync.Mutex
@@ -320,7 +318,7 @@ func (c *Chart) handleHealth(w http.ResponseWriter, _ *http.Request) {
 }
 
 func (c *Chart) handleIndex(w http.ResponseWriter, r *http.Request) {
-	var pairs = make([]string, 0, len(c.candles))
+	pairs := make([]string, 0, len(c.candles))
 	for pair := range c.candles {
 		pairs = append(pairs, pair)
 	}

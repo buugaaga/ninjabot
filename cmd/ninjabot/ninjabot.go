@@ -4,9 +4,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/rodrigo-brito/ninjabot/download"
-	"github.com/rodrigo-brito/ninjabot/exchange"
-	"github.com/rodrigo-brito/ninjabot/service"
+	"github.com/buugaaga/ninjabot/download"
+	"github.com/buugaaga/ninjabot/exchange"
+	"github.com/buugaaga/ninjabot/service"
 
 	"github.com/urfave/cli/v2"
 )
@@ -103,7 +103,6 @@ func main() {
 
 					return download.NewDownloader(exc).Download(c.Context, c.String("pair"),
 						c.String("timeframe"), c.String("output"), options...)
-
 				},
 			},
 		},

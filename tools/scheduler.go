@@ -1,8 +1,8 @@
 package tools
 
 import (
-	"github.com/rodrigo-brito/ninjabot"
-	"github.com/rodrigo-brito/ninjabot/service"
+	"github.com/buugaaga/ninjabot"
+	"github.com/buugaaga/ninjabot/service"
 	"github.com/samber/lo"
 	log "github.com/sirupsen/logrus"
 )
