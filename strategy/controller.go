@@ -69,6 +69,11 @@ func (s *Controller) updateDataFrame(candle model.Candle) {
 
 func (s *Controller) OnCandle(candle model.Candle) {
 	if len(s.dataframe.Time) > 0 && candle.Time.Before(s.dataframe.Time[len(s.dataframe.Time)-1]) {
+		log.Info(
+			"Controller OnCandle error: s.dataframe.Time, candle.Time.Before(s.dataframe.Time[len(s.dataframe.Time)-1]), candle.Time",
+			s.dataframe.Time, candle.Time.Before(s.dataframe.Time[len(s.dataframe.Time)-1]),
+			candle.Time,
+		)
 		log.Errorf("late candle received: %#v", candle)
 		return
 	}
